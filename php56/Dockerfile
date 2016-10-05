@@ -42,3 +42,5 @@ RUN mkdir /ioncube && \
 # Apache configuration
 RUN a2enmod rewrite
 RUN chown www-data:www-data -R /var/www/html/
+# PHP configuration
+COPY php.ini /usr/local/etc/php/
