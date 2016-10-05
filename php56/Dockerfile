@@ -1,12 +1,5 @@
 FROM php:5.6-apache
 
-ENV DB_PASSWD admin
-
-# Avoid MySQL questions during installation
-ENV DEBIAN_FRONTEND noninteractive
-RUN echo mysql-server-5.5 mysql-server/root_password password $DB_PASSWD | debconf-set-selections
-RUN echo mysql-server-5.5 mysql-server/root_password_again password $DB_PASSWD | debconf-set-selections
-
 RUN apt-get update \
   && apt-get install -y \
     cron \
