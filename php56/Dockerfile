@@ -39,6 +39,19 @@ RUN mkdir /ioncube && \
     cp /ioncube/ioncube/ioncube_loader_lin_5.6.so . && \
     rm -rf /ioncube/
 
+# Xdebug install
+RUN curl -fsSL 'https://github.com/xdebug/xdebug/archive/XDEBUG_2_4_1.zip' -o xdebug.zip \
+    && unzip xdebug.zip \
+    && ( \
+        cd xdebug-XDEBUG_2_4_1 \
+        && phpize \
+        && ./configure --enable-xdebug \
+        && make -j$(nproc) \
+        && make install \
+    ) \
+    && rm -r xdebug-XDEBUG_2_4_1 \
+&& docker-php-ext-enable xdebug
+
 # Apache configuration
 RUN a2enmod rewrite
 RUN chown www-data:www-data -R /var/www/html/
