@@ -9,7 +9,9 @@ RUN apt-get update \
     libmcrypt-dev \
     libpng12-dev \
     libxslt1-dev \
-    wget
+    wget \
+    zip \
+    unzip
 
 RUN docker-php-ext-configure \
   gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
