@@ -2,6 +2,7 @@ FROM php:5.4-apache
 
 RUN apt-get update \
     && apt-get install -y libmcrypt-dev \
+        curl \
         libjpeg62-turbo-dev \
         libpng12-dev \
         libfreetype6-dev \
