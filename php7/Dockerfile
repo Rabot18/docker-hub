@@ -45,16 +45,16 @@ RUN mkdir /ioncube && \
     rm -rf /ioncube/
 
 # Xdebug install
-RUN curl -fsSL 'https://github.com/xdebug/xdebug/archive/XDEBUG_2_4_1.zip' -o xdebug.zip \
+RUN curl -fsSL 'https://github.com/xdebug/xdebug/archive/XDEBUG_2_5.zip' -o xdebug.zip \
     && unzip xdebug.zip \
     && ( \
-        cd xdebug-XDEBUG_2_4_1 \
+        cd xdebug-XDEBUG_2_5 \
         && phpize \
         && ./configure --enable-xdebug \
         && make -j$(nproc) \
         && make install \
     ) \
-    && rm -r xdebug-XDEBUG_2_4_1 \
+    && rm -r xdebug-XDEBUG_2_5 \
 && docker-php-ext-enable xdebug
 
 # Apache configuration
